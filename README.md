@@ -1,1 +1,1 @@
-# ecomerce_store
+The great complete frontend Platform "Angular of Google" and the powerful Firebase as a backend make the web programming so wonderful. The philosophy of web programming is changed and we have to be always up to date.
