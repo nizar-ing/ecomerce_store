@@ -1,0 +1,17 @@
+
+.list-group > .list-group-item.active {
+background-image: linear-gradient(100deg,#439a0d,#d39e00);
+  color: white;
+  border-color: ghostwhite;
+}
+.list-group > .list-group-item:hover{
+  background-image: linear-gradient(100deg,#439a0d,#d39e00);
+
+}
+.list-group > .list-group-item{
+  background-image: linear-gradient(90deg,#196730,#439a0d);
+  color: white;
+}
+.sticky-top{
+  top: 80px;
+}

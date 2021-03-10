@@ -1,0 +1,17 @@
+
+.dropdown-toggle{
+  cursor: pointer;
+}
+.navbar-nav .nav-link{
+  color: white;
+}
+.dropdown-item:hover {
+  background-image: linear-gradient(100deg,#439a0d,#d39e00);
+  color: white;
+}
+.nizarIng{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-size: cover;
+}

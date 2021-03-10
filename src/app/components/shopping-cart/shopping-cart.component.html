@@ -1,0 +1,36 @@
+<h1>Shopping Cart</h1>
+<div class="row col-10" *ngIf="cart$ | async as cart">
+  <p>
+    You have {{ cart.totalItemsCount }} items in your shopping cart.
+    <button *ngIf="cart.items.length" class="btn btn-danger btn-sm" (click)="clearCart()">Clear Shopping Cart <i class="fa fa-trash" aria-hidden="true"></i></button>
+  </p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Product</th>
+      <th class="text-center" style="width: 250px">Quantity</th>
+      <th class="text-right" style="width: 200px">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of cart.items">
+      <td>
+        <div [style.backgroundImage]="'url(' + item.product.imageUrl + ')'" class="thumbnail" ></div>
+      </td>
+      <td>{{item.product.title}}</td>
+      <td><product-quantity [product]="item.product" [shopping-cart]="cart"></product-quantity></td>
+      <td class="text-right">{{item.totalPrice | currency: 'EUR'}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th class="text-right">{{cart.totalPrice | currency: 'EUR'}}</th>
+    </tr>
+    </tfoot>
+  </table>
+  <a *ngIf="cart.items.length" class="btn btn-info btn-sm" routerLink="/check-out">Check Out <i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+</div>

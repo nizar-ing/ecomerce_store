@@ -1,0 +1,32 @@
+<p>
+  <a routerLink="/admin/products/new" class="btn btn-success">New Product <i class="fa fa-plus"></i></a>
+</p>
+<p>
+  <input #query type="text" class="form-control" placeholder="Search..." (keyup)="filter(query.value)">
+</p>
+<table class="table table-striped table-dark" [mfData]="filteredProducts" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead class="bg-danger">
+    <tr>
+      <th scope="col"><mfDefaultSorter by="title" >Title</mfDefaultSorter></th>
+      <th scope="col"><mfDefaultSorter by="price" >Price</mfDefaultSorter></th>
+      <th scope="col" style="text-align: center">
+        Edit Action <i class="fa fa-cogs" aria-hidden="true"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of mf.data">
+      <td>{{ p.title }}</td>
+      <td>{{ p.price }}</td>
+      <td style="text-align: center"><a [routerLink]="['/admin/products/', p.key]" class="btn btn-warning">Edit Product <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="4">
+      <mfBootstrapPaginator [rowsOnPageSet]="[5,10,20,50]" style="color: black"></mfBootstrapPaginator>
+    </td>
+  </tr>
+  </tfoot>
+</table>

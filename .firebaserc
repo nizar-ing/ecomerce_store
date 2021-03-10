@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "organic-shop-fc179": {
+      "hosting": {
+        "organic-shop": [
+          "organic-shop-fc179"
+        ]
+      }
+    }
+  }
+}

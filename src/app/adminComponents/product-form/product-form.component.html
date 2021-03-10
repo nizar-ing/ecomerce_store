@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+            Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+          <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
+          <div class="input-group-prepend">
+            <span class="input-group-text">€</span>
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+          <div *ngIf="price.errors.required">Price is required.</div>
+          <div *ngIf="price.errors?.min">Price should be 0 or higher.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category"  class="form-control" required >
+          <option value=""></option>
+          <option *ngFor="let cat of categories$ | async"  value="{{cat.key}}">{{ cat.name }}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+          Category is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input #image="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+        <div class="alert alert-danger" *ngIf="image.touched && image.invalid">
+          <div *ngIf="image.errors.required">Image URL is required.</div>
+          <div *ngIf="image.errors?.url">Please enter a valid URL.</div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary " [class.disabled]="f.invalid">Save <i class="fa fa-cloud"></i></button>&nbsp;
+        <button *ngIf="productId" type="button" class="btn btn-danger " (click)="delete()">Delete <i class="fa fa-trash"></i></button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <product-card [product]="product" [show-actions]="false"></product-card>
+  </div>
+</div>

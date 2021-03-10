@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  padding-top: 80px;
+  background-color: whitesmoke;
+}
+table > thead >  tr> th > mfdefaultsorter > a {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+
